@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            padding: 40px;
+        }
+    </style>
+    <title>Covid 19 static</title>
+</head>
+<body>
+<div class="box">
+    <div class="container">
+        <h1 style="text-align: center">Covid 19 Global Static</h1>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Total Confirmed</th>
+                <th scope="col">Total Deaths</th>
+                <th scope="col">Total Recovered</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td id="Total"></td>
+                <td id="deaths"></td>
+                <td id="recovered"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="box">
+    <div class="container">
+        <h1 style="text-align: center">Covid 19 in Kyrgystan</h1>
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Total Confirmed</th>
+                    <th scope="col">Total Deaths</th>
+                    <th scope="col">Total Recovered</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td id="TotalKG"></td>
+                    <td id="deathsKG"></td>
+                    <td id="recoveredKG"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <button onclick="handleClickRefresh()" class="btn btn-danger">Refresh</button>
+    </div>
+</div>
+<script>
+    const API = 'https://api.covid19api.com/summary'
+
+    const SendRequest = (api) => {
+        return fetch(api)
+            .then(res => res.json())
+            .then(data => dislpayRequest(data))
+    }
+
+    const dislpayRequest = (data) => {
+        console.log(data)
+        document.querySelector('#Total').innerText = data.Global.TotalConfirmed;
+        document.querySelector('#deaths').innerText = data.Global.TotalDeaths;
+        document.querySelector('#recovered').innerText = data.Global.TotalRecovered;
+        document.querySelector('#TotalKG').innerText = data.Countries[91].TotalConfirmed;
+        document.querySelector('#deathsKG').innerText = data.Countries[91].TotalDeaths;
+        document.querySelector('#recoveredKG').innerText = data.Countries[91].TotalRecovered;
+    }
+
+    const handleClickRefresh = () => {
+        window.location.reload()
+    }
+    SendRequest(API)
+</script>
+</body>
+</html>

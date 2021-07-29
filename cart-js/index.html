@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        img {
+            width: 100%;
+            height: 280px;
+            margin: 3px;
+        }
+    </style>
+    <title>cart</title>
+</head>
+<body>
+<div class="d-flex justify-content-around mt-5">
+    <div class="card shadow" style="width: 18rem;">
+        <img src="https://st.depositphotos.com/1003272/1632/i/600/depositphotos_16322913-stock-photo-red-apple.jpg"
+             class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Яблока</h5>
+            <p class="card-text">цена: 35 сом</p>
+            <span onclick="minus1()" class="btn btn-success">-</span>
+            <span id="product1">1</span>
+            <span onclick="plus1()" class="btn btn-success">+</span>
+            <span>итог: <span id="total1">35</span> сом</span>
+        </div>
+    </div>
+    <div class="card shadow" style="width: 18rem;">
+        <img src="https://st.depositphotos.com/1902163/1955/i/950/depositphotos_19559331-stock-photo-pear.jpg"
+             class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Груша</h5>
+            <p class="card-text">цена: 60 сом</p>
+            <span onclick="minus2()" class="btn btn-success">-</span>
+            <span id="product2">1</span>
+            <span onclick="plus2()" class="btn btn-success">+</span>
+            <span>итог: <span id="total2">60</span> сом</span>
+        </div>
+    </div>
+    <div class="card shadow" style="width: 18rem;">
+        <img src="https://img3.procvetok.com/crop/w300h300/32/a0/32a074858cfe875cb16d47a91e7d3c93.jpg"
+             class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Арбуз</h5>
+            <p class="card-text">цена: 130 сом</p>
+            <span onclick="minus3()" class="btn btn-success">-</span>
+            <span id="product3">1</span>
+            <span onclick="plus3()" class="btn btn-success">+</span>
+            <span>итог: <span id="total3">130</span> сом</span>
+        </div>
+        :
+    </div>
+</div>
+
+<script>
+    const product1 = document.getElementById('product1');
+    const product2 = document.getElementById('product2');
+    const product3 = document.getElementById('product3');
+    const total1 = document.getElementById('total1');
+    const total2= document.getElementById('total2');
+    const total3 = document.getElementById('total3');
+    let i = 1
+    const plus1 = () => {
+        product1.innerHTML = +product1.innerHTML + 1;
+        total1.innerHTML = +total1.innerHTML + 35;
+
+    }
+    const minus1 = () => {
+        if (product1.innerHTML > 1) {
+            product1.innerHTML = +product1.innerHTML - 1;
+            total1.innerHTML = +total1.innerText - 35;
+        }
+    }
+    const plus2 = () => {
+        product2.innerHTML = +  product2.innerHTML + 1;
+        total2.innerHTML = +total2.innerHTML + 60;
+    }
+    const minus2 = () => {
+        if (product2.innerHTML > 1) {
+            product2.innerHTML = +  product2.innerHTML - 1;
+            total2.innerHTML = +total2.innerHTML - 60;
+        }
+    }
+    const plus3 = () => {
+        product3.innerHTML = +  product3.innerHTML + 1;
+        total3.innerHTML = +total3.innerHTML + 130;
+    }
+    const minus3 = () => {
+        if (product3.innerHTML > 1) {
+            product3.innerHTML = +  product3.innerHTML - 1;
+            total3.innerHTML = +total3.innerHTML - 130;
+        }
+    }
+</script>
+</body>
+</html>
